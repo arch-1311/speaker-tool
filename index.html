@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speaker Evaluation Tool</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+      padding: 20px;
+      border-radius: 8px;
+      border-radius: 3px;
+      border: 2px solid #333;
+      box-shadow: 3px 3px 0px #333;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      gap: 10px;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 34px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    input:checked + .slider:before {
+      transform: translateX(14px);
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .disclaimer {
+      font-size: 0.9rem;
+      margin-top: 20px;
+    }
+    .disclaimer .green-text {
+      color: green;
+    }
+    .disclaimer .red-text {
+      color: red;
+    }
+    h5 {
+        font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>TEDx Speaker Evaluation Tool</h2>
+    <p class="text-center">Toggle the switches for each question:</p>
+
+    <!-- Questions Section -->
+    <!-- <div class="question">
+      <span>The person is a friend or a relative of a team member</span>
+      <label class="switch">
+        <input type="checkbox" class="toggle-switch">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <div class="question">
+      <span>The person is recommended by a team member who is a "big fan"</span>
+      <label class="switch">
+        <input type="checkbox" class="toggle-switch">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <div class="question">
+      <span>The person uses the dedicated form to nominate him/herself</span>
+      <label class="switch">
+        <input type="checkbox" class="toggle-switch">
+        <span class="slider round"></span>
+      </label>
+    </div> -->
+    
+    <h5>CONTACT WITH THE TEDx TEAM</h5>
+    <div class="question">
+    <span>The person is a friend or a relative of a team member</span>
+    <label class="switch">
+        <input type="checkbox" class="toggle-switch">
+        <span class="slider round"></span>
+    </label>
+    </div>
+    <div class="question">
+    <span>The person is recommended by a team member who is a "big fan"</span>
+    <label class="switch">
+        <input type="checkbox" class="toggle-switch">
+        <span class="slider round"></span>
+    </label>
+    </div>
+    <div class="question">
+    <span>The person uses the dedicated form to nominate him/herself to talk at your event</span>
+    <label class="switch">
+        <input type="checkbox" class="toggle-switch">
+        <span class="slider round"></span>
+    </label>
+    </div>
+    <div class="question">
+    <span>The person does not mention any idea in his/her application</span>
+    <label class="switch">
+        <input type="checkbox" class="toggle-switch">
+        <span class="slider round"></span>
+    </label>
+    </div>
+    <div class="question">
+    <span>The person contacts a team member directly on Social Media, instead of using the dedicated form to apply</span>
+    <label class="switch">
+        <input type="checkbox" class="toggle-switch">
+        <span class="slider round"></span>
+    </label>
+    </div>
+    <div class="question">
+    <span>The person applies several times or contacts your team several times to know if you will consider his/her application</span>
+    <label class="switch">
+        <input type="checkbox" class="toggle-switch">
+        <span class="slider round"></span>
+    </label>
+    </div>
+    <div class="question">
+    <span>You receive more than 5 nominations for this person (unless it is Simon Sinek)</span>
+    <label class="switch">
+        <input type="checkbox" class="toggle-switch">
+        <span class="slider round"></span>
+    </label>
+    </div>
+    <hr>
+    <h5>HISTORY WITH TEDx & OTHER CONFERENCES</h5>
+
+<div class="question">
+  <span>The person already did a TEDx within the last 24 months</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+<div class="question">
+  <span>The person already participated in more than 2 TEDx within the last 48 months</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+<div class="question">
+  <span>The person participated in more than 10 conferences within the last 24 months</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+<hr>
+    <h5>PERSONAL AGENDA & CAUSE BACKING</h5>
+
+    <div class="question">
+    <span>The person defends a controversial point of view or adheres to a reactionary cause</span>
+    <label class="switch">
+        <input type="checkbox" class="toggle-switch">
+        <span class="slider round"></span>
+    </label>
+    </div>
+    <div class="question">
+    <span>The person talks at divisive gatherings (extreme political meetings, radical activism rallies, pseudo-scientific conferences...)</span>
+    <label class="switch">
+        <input type="checkbox" class="toggle-switch">
+        <span class="slider round"></span>
+    </label>
+    </div>
+    <div class="question">
+    <span>The person contributes to dogmatic publications (polarized medias, pseudo-scientific sites or magazines...)</span>
+    <label class="switch">
+        <input type="checkbox" class="toggle-switch">
+        <span class="slider round"></span>
+    </label>
+    </div>
+    <hr>
+    <h5>EXPERTISE & AUTHORITY</h5>
+
+<div class="question">
+  <span>The person presents him/herself as an expert</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+<div class="question">
+  <span>The person presents him/herself as an "independent" scientist or "independent" researcher</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+<div class="question">
+  <span>The person presents him/herself as a researcher and does not have any reference on researchgate.com or scholar.google.com</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+<div class="question">
+  <span>The person presents him/herself as a researcher and does not have any article published in one of the main scientific publications listed HERE</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+<div class="question">
+  <span>The person presents him/herself as a researcher but his/her résumé presents the profile of a practitioner</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+<div class="question">
+  <span>The person presents him/herself as a researcher but does not come to your event to talk in his/her field</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+<div class="question">
+  <span>The person wants to talk about health issue(s) but is not a medical doctor</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+
+<hr>
+<h5>PREPARATION & COACHING</h5>
+
+<div class="question">
+  <span>The person often refers to their title (PhD, Doctor, Professor...) to make a point</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+<div class="question">
+  <span>The candidate does not collaborate with his/her coach to prepare his/her talk</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+<div class="question">
+  <span>The candidate does not want to write down his/her talk</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+<div class="question">
+  <span>The candidate does not want to provide his/her slides before the last rehearsal</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+<div class="question">
+  <span>The candidate does not respect the deadlines or does not attend the last rehearsal</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+<div class="question">
+  <span>The candidate insists on mentioning his/her company name and/or including the company logo in the slides</span>
+  <label class="switch">
+    <input type="checkbox" class="toggle-switch">
+    <span class="slider round"></span>
+  </label>
+</div>
+
+
+
+    <!-- Result Button -->
+    <div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-primary mt-4" id="toggle-answer">Show Answer</button>
+    </div> <!--d-block mx-auto mt-4-->
+
+    <div class="result" id="result" style="font-size:22px; display: none;"></div>
+    <hr>
+    <div class="disclaimer mt-4">
+      <p class="green-text">
+        A total of 1 or 2 flags is already concerning. It probably means that the person has his/her own agenda to participate and that the coaching will be difficult.
+      </p>
+      <p class="red-text">
+        Beyond 3 flags, TEDx is definitely not the right place for the person to give a talk.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const toggleButton = document.getElementById("toggle-answer");
+    const resultDiv = document.getElementById("result");
+    const switches = document.querySelectorAll(".toggle-switch");
+
+    function calculateResult() {
+      // Count "Yes" answers (switches toggled on)
+      const yesCount = Array.from(switches).filter(switchEl => switchEl.checked).length;
+
+      // Determine result based on yesCount
+      const resultText = yesCount >= 3 ? "Not a Speaker" : "You found a Speaker!";
+      const resultColor = yesCount >= 3 ? "red" : "green";
+
+      resultDiv.innerText = resultText;
+      resultDiv.style.color = resultColor;
+    }
+
+    // Show/Hide Answer Button
+    toggleButton.addEventListener("click", () => {
+      if (resultDiv.style.display === "none") {
+        calculateResult(); // Show result
+        resultDiv.style.display = "block";
+        toggleButton.innerText = "Hide Answer";
+      } else {
+        resultDiv.style.display = "none"; // Hide result
+        toggleButton.innerText = "Show Answer";
+      }
+    });
+
+    // Update dynamically when toggling switches
+    switches.forEach(switchEl => {
+      switchEl.addEventListener("change", () => {
+        if (resultDiv.style.display === "block") {
+          calculateResult(); // Recalculate if result is visible
+        }
+      });
+    });
+  </script>
+</body>
+</html>
